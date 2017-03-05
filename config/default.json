@@ -1,0 +1,25 @@
+{
+  "database-configuration": {
+    "host": "192.168.29.128:5432",
+    "user": "postgres",
+    "pass": "123",
+    "name": "puppies"
+  },
+
+  "oauthCredentials": {
+    "twitter": {
+        "id": "<>",
+        "secret": "<>"
+    },
+    "google": {
+        "id": "<>",
+        "secret": "<>"
+    }
+  },
+
+  "oauthCallbacks": {
+    "googleCallbackUrl"  : "http://localhost:5000/callback/google",
+    "twitterCallbackUrl" : "http://localhost:5000/callback/twitter",
+    "facebookCallbackUrl": "http://localhost:5000/callback/facebook"
+  }
+}
