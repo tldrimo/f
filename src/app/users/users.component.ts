@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { User } from '../shared/services/user/user';
 import { UserService } from '../shared/services/user/user.service';
@@ -13,7 +14,9 @@ export class UsersComponent implements OnInit {
   users: User[];
   selectedUser: User;
 
-  constructor(private _userService: UserService) { }
+  constructor(
+    private _userService: UserService,
+    private _router: Router) { }
 
   ngOnInit() {
     this.getUsers();
@@ -26,10 +29,18 @@ export class UsersComponent implements OnInit {
   onSelect(user: User) {
     if(user == this.selectedUser) {
       //this.selectedHero = undefined;
+      
     } else {
       this.selectedUser = user;
+      this._router.navigate(['/user-detail'], { queryParams: { id: `${this.selectedUser.id}`} });
+
     }
   }
 
   title = 'Users Component';
+
+//  goToUserDetail() {
+//    this._router.navigate(['/user-detail'], { queryParams: { id: `${this.selectedUser.id}`} });
+//  }
+
 }

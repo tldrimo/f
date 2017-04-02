@@ -27,6 +27,7 @@ import { HeroService } from './shared/services/hero/hero.service';
 
 import { AppRoutingModule, routedComponents } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { UserDetailComponent } from './users/user-detail/user-detail.component';
 
 @NgModule({
   imports: [
@@ -57,7 +58,8 @@ import { AppComponent } from './app.component';
     MdListItem,
     MdButton,
     MdIcon,
-    MdSpinner
+    MdSpinner,
+    UserDetailComponent
   ],
   providers: [HomeRootComponentGuard,
               UnauthenticatedGuard,

@@ -6,11 +6,23 @@
  * Import core modules
  */
 var express = require('express');
-var router  = express.Router();
+var router = express.Router();
 var authenticationHelpers = require('../authenticationHelpers');
-var users   =  require('./users');
+
+var users = require('./users');
+//var heroes_old = require('./heroes_old');
+
+var heroes = require('./heroes');
+
 
 router.use('/users', users);
+
+router.get('/heroes', heroes.getAll);
+router.get('/heroes/:id', heroes.getOne);
+router.post('/heroes', heroes.create);
+router.put('/heroes/:id', heroes.update);
+router.delete('/heroes/:id', heroes.delete);
+
 
 router.get('/authenticated', authenticationHelpers.isAuth, function(req, res, next) {
   res.json({"authenticated": true});
@@ -20,6 +32,7 @@ router.get('/', function(request, response) {
   response.json({"made it": "ok"});
 });
 
+/**
 router.get('/heroes', function(request, response) {
   response.json(
     [
@@ -46,5 +59,6 @@ router.get('/heroes', function(request, response) {
     ]
   );
 });
+*/
 
 module.exports = router;

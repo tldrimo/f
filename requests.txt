@@ -1,0 +1,38 @@
+http://192.168.29.128:5000/api/users
+http://192.168.29.128:5000/api/heroes
+
+
+
+//getAll
+GET http://192.168.29.128:5000/api/heroes HTTP/1.1
+
+
+
+//getOne
+GET http://192.168.29.128:5000/api/heroes/8 HTTP/1.1
+
+
+
+//create
+POST http://192.168.29.128:5000/api/heroes HTTP/1.1
+content-type: application/json
+
+{
+    "name": "create-name-banik555"
+}
+
+
+
+//update
+PUT http://192.168.29.128:5000/api/heroes/8 HTTP/1.1
+content-type: application/json
+
+{
+    "id": 8,
+    "name": "update-name-888"
+}
+
+
+
+//delete
+DELETE http://192.168.29.128:5000/api/heroes/7 HTTP/1.1

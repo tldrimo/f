@@ -1,6 +1,7 @@
 <h2>{{title}}</h2>
 <h2>Here's a list of our 5 most recent users</h2>
 
+<!--
 <div class="body">  
   <div class="repeat repeat-fade-in" *ngFor="let user of users">
     <user-badge
@@ -11,3 +12,42 @@
     </user-badge>
   </div>
 </div>
+-->
+
+
+<div class="body">
+
+<!--
+  <div *ngIf="selectedUser" class="expand">
+    <h2>
+      {{selectedUser.name | uppercase}} 
+    </h2>
+    <button md-raised-button (click)="goToUserDetail()">Details</button>
+  </div>
+-->
+
+<div class="repeat repeat-fade-in" *ngFor="let user of users">
+  <quick-card
+            class="repeat-fade-in"
+            (click)="onSelect(user)"
+            [selected]="user === selectedUser"
+            [name]="user.name"
+            [img]="'https://randomuser.me/api/portraits/med/men/96.jpg'">
+    </quick-card>
+  </div>
+</div>
+
+
+
+<!--
+<div class="repeat repeat-fade-in" *ngFor="let user of users">
+  <quick-card
+            class="repeat-fade-in"
+            (click)="onSelect(user)"
+            [selected]="user === selectedUser"
+            [name]="user.name"
+            [img]="'https://randomuser.me/api/portraits/med/men/96.jpg'">
+    </quick-card>
+  </div>
+</div>
+-->

@@ -1,0 +1,22 @@
+<h2>{{title}}</h2>
+
+<md-card *ngIf="user" class="global" id="selectedUserDetails">
+  <h2>{{user.name}} details!</h2>
+
+  <div>
+    <label>id: </label>{{user.id}}
+  </div>
+
+  <div>
+    <label>name: </label>
+    <md-input [(ngModel)]="user.name" placeholder="name"></md-input>
+  </div>
+  
+  <div>
+    <label>email: </label>
+    <md-input [(ngModel)]="user.email" placeholder="email"></md-input>
+  </div>
+
+    <button md-raised-button color="primary" (click)="goBack()">Back</button>
+    <button md-raised-button color="primary" (click)="saveData(user)">Save</button>
+</md-card>

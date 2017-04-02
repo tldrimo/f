@@ -2,6 +2,7 @@ import { Injectable, Inject } from '@angular/core'; // because we want to be abl
 import { Http, Response, RequestOptionsArgs } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 
+
 /**
  * Import interfaces that service depends on
  */
@@ -14,14 +15,39 @@ export class HeroService {
   private _heroesUrl = this._apiBase + '/api/heroes';
 
   getHeroes () {
-    return this.http.get(this._heroesUrl, <RequestOptionsArgs> {withCredentials: true})
-                  .map(res => <Hero[]> res.json(), this.handleError)
-                  .map(data => { console.log(data); return data; }); // eyeball results in the console
-    }
+    return this.http
+      .get(this._heroesUrl, <RequestOptionsArgs> {withCredentials: true})
+      .map(res => <Hero[]> res.json(), this.handleError)
+      .map(data => { console.log(data); return data; }); // eyeball results in the console
+  }
 
   getHero(id: number) {
-    return this.getHeroes().map(heroes => heroes.filter(hero => hero.id === id)[0]);
+    return this.http
+      .get(this._heroesUrl + '/' + id, <RequestOptionsArgs> {withCredentials: true})
+      .map(res => res.json(), this.handleError)
+      .map(data => { console.log(data); return data; });
   }
+
+  createHero(hero: Hero) {
+    return this.http
+      .post(this._heroesUrl, hero, <RequestOptionsArgs> {withCredentials: true})
+      .map(res => res.json(), this.handleError)
+      .map(data => { console.log(data); return data; });
+  }
+
+  updateHero(hero: Hero) {
+    return this.http
+      .put(this._heroesUrl + '/' + hero.id, hero, <RequestOptionsArgs> {withCredentials: true})
+      .map(res => res.json(), this.handleError)
+      .map(data => { console.log(data); return data; });
+  }
+
+  deleteHero(id: number) {
+       return this.http.delete(this._heroesUrl + '/' + id, <RequestOptionsArgs> {withCredentials: true})
+      .map(res => res.json(), this.handleError)
+      .map(data => { console.log(data); return data; });
+  }
+
 
   private handleError (error: Response) {
     // in a real world app, we may send the server to some remote logging infrastructure

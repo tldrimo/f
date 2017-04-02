@@ -29,6 +29,12 @@ export class HeroesComponent implements OnInit {
     this._heroService.getHeroes().subscribe(heroes => this.heroes = heroes);
   }
 
+  CreateHeroButton(hero) {
+    this._heroService.createHero(hero);
+    console.log(hero);
+      //.subscribe(hero => this.hero = hero);    
+  }
+
   title = 'Tour of Heroes';
 
   onSelect(hero: Hero) {

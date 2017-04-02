@@ -11,7 +11,9 @@
  */
 module.exports = function(userAttributes) {
   return {
+    "id": userAttributes.id,
     "name": userAttributes.name,
+    "email": userAttributes.email,
     "username": userAttributes.username,
     "profile_picture": userAttributes.profile_picture,
     "last_active": userAttributes.last_active

@@ -6,6 +6,6 @@
   <div class="card-content">
     <p class="name">{{name}}</p>
     <button md-raised-button color="primary" [class.selected-contrast]="selected">Add Friend</button>
-    <button md-raised-button color="primary" [class.selected-contrast]="selected">Profile</button>
+    <button md-raised-button (click)="goToUserDetail()" color="primary" [class.selected-contrast]="selected">Profile</button>
   </div>
 </md-card>

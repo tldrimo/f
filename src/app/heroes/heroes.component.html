@@ -1,16 +1,40 @@
 <h2>{{title}}</h2>
-<h2>From the Angular getting started tutorial</h2>
 
-<div class="body">
+<div class="content">
+
+  <md-card elevation="5">
+
+    <md-card-subtitle>
+      <h2>New hero</h2>
+    </md-card-subtitle>
+
+    <md-card-content>
+
+      <form *ngIf="!submitted" [formGroup]="form" (ngSubmit)="onSubmit()" #registerForm="ngForm">
+        <md-input formControlName="name" required placeholder="Name"></md-input>
+        <button type="submit" [disabled]="!registerForm.form.valid" md-raised-button color="primary">New</button>
+      </form>
+
+      <md-spinner *ngIf="submitted" mode="indeterminate"></md-spinner>
+
+      <p class="error" *ngIf="errorDiagnostic">{{errorDiagnostic}}</p>
+
+    </md-card-content>
+
+  </md-card>
+
+  <br>
+
+
+  <h2>Hero List</h2>
+
   <div *ngIf="selectedHero" class="expand">
-    <h2>
-      {{selectedHero.name | uppercase}} is my hero
-    </h2>
+    <h2>{{selectedHero.name | uppercase}} is my hero</h2>
     <button md-raised-button (click)="goToDetail()">View Details</button>
   </div>
 
-<div class="repeat repeat-fade-in" *ngFor="let hero of heroes">
-  <quick-card
+  <div class="repeat repeat-fade-in" *ngFor="let hero of heroes">
+    <quick-card
             class="repeat-fade-in"
             (click)="onSelect(hero)"
             [selected]="hero === selectedHero"
@@ -18,4 +42,5 @@
             [img]="'https://randomuser.me/api/portraits/med/men/96.jpg'">
     </quick-card>
   </div>
+
 </div>

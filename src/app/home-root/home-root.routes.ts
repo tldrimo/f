@@ -1,8 +1,12 @@
 import { HomeRootComponent } from './home-root.component';
 import { HomeRootComponentGuard } from './home-root.guard';
+
 import { UsersComponent } from '../users/users.component';
+import { UserDetailComponent } from '../users/user-detail/user-detail.component';
+
 import { HeroesComponent } from '../heroes/heroes.component';
 import { HeroDetailComponent } from '../hero-detail/hero-detail.component';
+
 
 export const HomeRootRoutes = [
   {
@@ -12,7 +16,8 @@ export const HomeRootRoutes = [
     children: [
       { path: '', component: UsersComponent },
       { path: 'heroes', component: HeroesComponent },
-      { path: 'detail', component: HeroDetailComponent }
+      { path: 'detail', component: HeroDetailComponent },
+      { path: 'user-detail', component: UserDetailComponent }
     ]
   }
 ];
