@@ -1,22 +1,32 @@
-import {
-  beforeEachProviders,
-  describe,
-  expect,
-  it,
-  inject
-} from '@angular/core/testing';
-import { Angular2LoginSeedAppComponent } from '../app/angular2-login-seed.component';
+import { TestBed, async } from '@angular/core/testing';
 
-beforeEachProviders(() => [Angular2LoginSeedAppComponent]);
+import { AppComponent } from './app.component';
 
-describe('App: Angular2LoginSeed', () => {
-  it('should create the app',
-      inject([Angular2LoginSeedAppComponent], (app: Angular2LoginSeedAppComponent) => {
+describe('AppComponent', () => {
+  beforeEach(async(() => {
+    TestBed.configureTestingModule({
+      declarations: [
+        AppComponent
+      ],
+    }).compileComponents();
+  }));
+
+  it('should create the app', async(() => {
+    const fixture = TestBed.createComponent(AppComponent);
+    const app = fixture.debugElement.componentInstance;
     expect(app).toBeTruthy();
   }));
 
-  it('should have as title \'angular2-login-seed works!\'',
-      inject([Angular2LoginSeedAppComponent], (app: Angular2LoginSeedAppComponent) => {
-    expect(app.title).toEqual('angular2-login-seed works!');
+  it(`should have as title 'app works!'`, async(() => {
+    const fixture = TestBed.createComponent(AppComponent);
+    const app = fixture.debugElement.componentInstance;
+    expect(app.title).toEqual('app works!');
+  }));
+
+  it('should render title in a h1 tag', async(() => {
+    const fixture = TestBed.createComponent(AppComponent);
+    fixture.detectChanges();
+    const compiled = fixture.debugElement.nativeElement;
+    expect(compiled.querySelector('h1').textContent).toContain('app works!');
   }));
 });

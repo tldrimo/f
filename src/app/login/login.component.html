@@ -16,8 +16,10 @@
         <button (click)="openAuthWindow('twitter')" md-raised-button color="primary">Twitter</button>
 
         <form *ngIf="!submitted" [formGroup]="form" (ngSubmit)="onSubmit()" #loginForm="ngForm">
-          <md-input formControlName="username" required placeholder="Username"></md-input>
-          <md-input formControlName="password" required type="password" placeholder="Password"></md-input>
+          <md-input-container>
+          <input mdInput formControlName="username" required placeholder="Username">
+          <input mdInput formControlName="password" required type="password" placeholder="Password">
+          </md-input-container>
           <button type="submit" [disabled]="!loginForm.form.valid" md-raised-button color="primary">Login</button>
         </form>
 

@@ -14,10 +14,12 @@
         <h2>Create an account</h2>
 
         <form *ngIf="!submitted" [formGroup]="form" (ngSubmit)="onSubmit()" #registerForm="ngForm">
-          <md-input formControlName="name" required placeholder="Name"></md-input>
-          <md-input formControlName="username" required placeholder="Username"></md-input>
-          <md-input formControlName="email" required placeholder="example@email.com"></md-input>
-          <md-input formControlName="password" required type="password" placeholder="Password"></md-input>
+          <md-input-container>
+          <input mdInput formControlName="name" required placeholder="Name">
+          <input mdInput formControlName="username" required placeholder="Username">
+          <input mdInput formControlName="email" required placeholder="example@email.com">
+          <input mdInput formControlName="password" required type="password" placeholder="Password">
+          </md-input-container>
           <button type="submit" [disabled]="!registerForm.form.valid" md-raised-button color="primary">Register</button>
         </form>
 

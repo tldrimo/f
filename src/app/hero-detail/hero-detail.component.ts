@@ -23,8 +23,7 @@ export class HeroDetailComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.sub = this._activatedRoute
-      .queryParams
+    this.sub = this._activatedRoute.queryParams
       .subscribe(params => {
         this.selectedId = +params['id'];
         this._heroService.getHero(this.selectedId)
@@ -38,7 +37,7 @@ export class HeroDetailComponent implements OnInit, OnDestroy {
 
   updateHeroButton(hero) {
     this._heroService.updateHero(hero)
-      .subscribe(hero => this.hero = hero);
+      .subscribe(() => this.hero = hero);
   }
 
   deleteHeroButton(id) {

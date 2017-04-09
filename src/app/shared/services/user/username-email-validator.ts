@@ -1,6 +1,8 @@
-import { Http, HTTP_PROVIDERS, Response } from '@angular/http';
+//import { Http, HTTP_PROVIDERS, Response } from '@angular/http';
+import { Http, HttpModule, Response } from '@angular/http';
 import { ReflectiveInjector } from '@angular/core'
-import { Control } from '@angular/common';
+//import { Control } from '@angular/common';
+import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs/Rx';
   
 /**
@@ -17,12 +19,13 @@ import { Observable } from 'rxjs/Rx';
  * debouncing and asynchronous control validator.
  */
 
-function checkUser(field: string, control: Control): Observable<any> {
+function checkUser(field: string, control: FormControl): Observable<any> {
   // Return an observable with null if the
   // username or email doesn't yet exist, or
   // an object with the rejection reason if they do
   
-  let injector = ReflectiveInjector.resolveAndCreate([HTTP_PROVIDERS]);
+  //let injector = ReflectiveInjector.resolveAndCreate([HTTP_PROVIDERS]);
+  let injector = ReflectiveInjector.resolveAndCreate([HttpModule]);
   let http = injector.get(Http);
   
   return new Observable((obs: any) => {
@@ -58,11 +61,11 @@ export class UsernameEmailValidator {
   /**
    * Public control validators
    */
-  static checkUsername(control: Control) {
+  static checkUsername(control: FormControl) {
     return checkUser('username', control);
   }
 
-  static checkEmail(control: Control) {
+  static checkEmail(control: FormControl) {
     return checkUser('email', control);
   }
 }

@@ -7,7 +7,9 @@
   </div>
   <div>
     <label>name: </label>
-    <md-input [(ngModel)]="hero.name" placeholder="name"></md-input>
+    <md-input-container>
+      <input mdInput [(ngModel)]="hero.name" placeholder="name">
+    </md-input-container>
   </div>
   <button md-raised-button color="primary" (click)="goBackButton()">Back</button>
   <button md-raised-button color="primary" (click)="updateHeroButton(hero)">Save</button>

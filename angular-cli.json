@@ -1,6 +1,6 @@
 {
   "project": {
-    "version": "1.0.0-beta.19-3",
+    "version": "1.0.0",
     "name": "angular2-login-seed"
   },
   "apps": [
@@ -20,9 +20,11 @@
       "styles": [
         "styles.css"
       ],
-      "scripts": [],
+      "scripts": [
+        "../node_modules/hammerjs/hammer.min.js"
+      ],
+      "environmentSource": "environments/environment.ts",
       "environments": {
-        "source": "environments/environment.ts",
         "dev": "environments/environment.ts",
         "prod": "environments/environment.prod.ts"
       }

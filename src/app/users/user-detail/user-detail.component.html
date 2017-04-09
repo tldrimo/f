@@ -9,12 +9,16 @@
 
   <div>
     <label>name: </label>
-    <md-input [(ngModel)]="user.name" placeholder="name"></md-input>
+    <md-input-container>
+    <input mdInput [(ngModel)]="user.name" placeholder="name">
+    </md-input-container>
   </div>
   
   <div>
     <label>email: </label>
-    <md-input [(ngModel)]="user.email" placeholder="email"></md-input>
+    <md-input-container>
+    <input mdInput [(ngModel)]="user.email" placeholder="email">
+    </md-input-container>
   </div>
 
     <button md-raised-button color="primary" (click)="goBack()">Back</button>

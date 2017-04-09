@@ -2,6 +2,14 @@
 
 <div class="content">
 
+
+<!--
+<md-input-container>
+  <input mdInput placeholder="Name">
+</md-input-container>
+-->
+
+<!--
   <md-card elevation="5">
 
     <md-card-subtitle>
@@ -10,24 +18,25 @@
 
     <md-card-content>
 
-      <form *ngIf="!submitted" [formGroup]="form" (ngSubmit)="onSubmit()" #registerForm="ngForm">
-        <md-input formControlName="name" required placeholder="Name"></md-input>
+      <form *ngIf="!submitted" [formGroup]="form" (ngSubmit)="creteHeroButton()" #registerForm="ngForm">
+        <input mdInput formControlName="name" required placeholder="Name">
         <button type="submit" [disabled]="!registerForm.form.valid" md-raised-button color="primary">New</button>
       </form>
 
       <md-spinner *ngIf="submitted" mode="indeterminate"></md-spinner>
-
-      <p class="error" *ngIf="errorDiagnostic">{{errorDiagnostic}}</p>
 
     </md-card-content>
 
   </md-card>
 
   <br>
+-->
+
 
 
   <h2>Hero List</h2>
 
+<!--
   <div *ngIf="selectedHero" class="expand">
     <h2>{{selectedHero.name | uppercase}} is my hero</h2>
     <button md-raised-button (click)="goToDetail()">View Details</button>
@@ -42,5 +51,18 @@
             [img]="'https://randomuser.me/api/portraits/med/men/96.jpg'">
     </quick-card>
   </div>
+
+
+    <md-line (click)="goToDetail()">
+-->
+
+
+
+
+<md-nav-list>
+  <md-list-item *ngFor="let hero of heroes" (click)="goToDetail(hero)">
+      {{ hero.id }} {{ hero.name }}
+  </md-list-item>
+</md-nav-list>
 
 </div>

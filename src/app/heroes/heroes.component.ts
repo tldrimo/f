@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { MdButton } from '@angular2-material/button';
 
 import { Hero } from '../shared/services/hero/hero';
 import { HeroService } from '../shared/services/hero/hero.service';
@@ -36,7 +35,7 @@ export class HeroesComponent implements OnInit {
   }
 
   title = 'Tour of Heroes';
-
+/**
   onSelect(hero: Hero) {
     if(hero == this.selectedHero) {
       //this.selectedHero = undefined;
@@ -45,7 +44,30 @@ export class HeroesComponent implements OnInit {
     }
   }
 
+
   goToDetail() {
     this._router.navigate(['/detail'], { queryParams: { id: `${this.selectedHero.id}`} });
   }
+*/
+
+  goToDetail(hero: Hero) {
+    this.selectedHero = hero;
+    this._router.navigate(['/detail'], { queryParams: { id: `${this.selectedHero.id}`} });
+  }
+
+/**
+  map vs subscribe
+  http://stackoverflow.com/questions/40985605/property-then-does-not-exist-on-type-observable
+  
+  taky v dashboard.component.ts
+
+  If you want to use the Observable API directly then replace your then call with a subscribe call.
+  But remember that every subscription also needs to be cancelled when your component gets destroyed.
+
+  ngOnDestroy() {
+  this.subscription.unsubscribe();
+  }
+*/
+
+
 }
