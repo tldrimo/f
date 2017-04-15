@@ -32,6 +32,17 @@
   <br>
 -->
 
+<button md-raised-button color="primary" (click)="createNotification()" required>Create Notification</button>
+
+<h2>New hero</h2>
+
+<md-card>
+    <md-input-container>
+      <input mdInput [(ngModel)]="heroName" placeholder="Name">
+    </md-input-container>
+    <button md-raised-button color="primary" (click)="createHeroButton(heroName)" required>Create Hero</button>
+</md-card>
+
 
 
   <h2>Hero List</h2>
@@ -56,9 +67,6 @@
     <md-line (click)="goToDetail()">
 -->
 
-
-
-
 <md-nav-list>
   <md-list-item *ngFor="let hero of heroes" (click)="goToDetail(hero)">
       {{ hero.id }} {{ hero.name }}
@@ -66,3 +74,4 @@
 </md-nav-list>
 
 </div>
+
