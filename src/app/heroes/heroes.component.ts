@@ -4,6 +4,8 @@ import { Router } from '@angular/router';
 import { Hero } from '../shared/services/hero/hero';
 import { HeroService } from '../shared/services/hero/hero.service';
 
+import { NotificationsService } from 'angular2-notifications';
+
 @Component({
     selector: 'my-heroes',
     templateUrl: './heroes.component.html',
@@ -13,28 +15,55 @@ import { HeroService } from '../shared/services/hero/hero.service';
 export class HeroesComponent implements OnInit {
   heroes: Hero[];
   selectedHero: Hero;
+  hero: Hero;
 
   constructor(
+    private _service: NotificationsService,
     private _heroService: HeroService,
-    private _router: Router) {
-
-  }
+    private _router: Router) { }
 
   ngOnInit() {
     this.getHeroes();
   }
 
-  getHeroes() {
-    this._heroService.getHeroes().subscribe(heroes => this.heroes = heroes);
-  }
-
-  CreateHeroButton(hero) {
-    this._heroService.createHero(hero);
-    console.log(hero);
-      //.subscribe(hero => this.hero = hero);    
-  }
-
   title = 'Tour of Heroes';
+
+  public createNotification(hero: Hero) {
+    this._service.success(
+        'Success',
+        JSON.stringify(hero),//'Some Content',
+        {
+            showProgressBar: true,
+            pauseOnHover: false,
+            clickToClose: false,
+            maxLength: 20
+        }
+    )
+  }
+
+  getHeroes() {
+    this._heroService.getHeroes().subscribe(data => this.heroes = data);
+  }
+
+
+  createHeroButton(heroName: string) {
+    this.hero = { "id": null, "name": heroName };
+
+    this._heroService.createHero(this.hero)
+      .subscribe(data => this.heroes.push(data) && this.createNotification(data)
+    );
+    
+  /**
+    if(this._heroService.createHero(this.hero)
+      .subscribe(data => this.heroes.push(data))
+      ) this.createNotification();
+   */
+
+      //console.log(this.hero);
+  }
+
+    
+
 /**
   onSelect(hero: Hero) {
     if(hero == this.selectedHero) {
