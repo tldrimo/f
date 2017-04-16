@@ -28,13 +28,6 @@ CREATE TABLE "role_permission" (
 	"changed_by" INTEGER not null references "user" (id)
 )
 
-CREATE TABLE "roles" (
-	"id" SERIAL primary key,
-	"nazev" TEXT unique not null,
-	"zmeneno" TIMESTAMP not null default CURRENT_TIMESTAMP,
-	"zmenil" integer references users (id)
-)
-
 -- predelat
 CREATE TABLE IF NOT EXISTS users (
   id serial primary key,
